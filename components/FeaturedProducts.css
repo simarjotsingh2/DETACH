@@ -1,0 +1,102 @@
+/* Accent like hero heading */
+.fp-accent {
+    background: linear-gradient(90deg, #ff477e 0%, #ff6b6b 50%, #ffd166 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Soft cinematic shadow + rim light */
+.fp-shadow {
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, .35),
+        inset 0 1px 0 rgba(255, 255, 255, .06);
+}
+
+/* Light sweep sheen */
+.fp-sheen::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, .18) 40%, transparent 55%);
+    transform: translateX(-60%) skewX(-20deg);
+    animation: fpSheen 7s linear infinite;
+    pointer-events: none;
+    border-radius: 16px;
+    mix-blend-mode: screen;
+}
+
+@keyframes fpSheen {
+    0% {
+        transform: translateX(-65%) skewX(-20deg);
+    }
+
+    60% {
+        transform: translateX(65%) skewX(-20deg);
+    }
+
+    100% {
+        transform: translateX(65%) skewX(-20deg);
+    }
+}
+
+/* Buttons to match hero */
+.fp-btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium text-black;
+    background: linear-gradient(90deg, #ffffff, #d6d6d6);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, .08);
+    transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+.fp-btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 36px rgba(255, 255, 255, .12);
+}
+
+.fp-btn-ghost,
+.fp-btn-icon {
+    @apply inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.fp-btn-ghost:hover,
+.fp-btn-icon:hover {
+    background: rgba(255, 255, 255, .08);
+    transform: translateY(-1px);
+}
+
+.fp-btn-icon {
+    @apply p-2 px-2.5;
+}
+
+
+/* app/globals.css (or your main css) */
+.text-gradient {
+    background: linear-gradient(90deg, #ff477e 0%, #ff6b6b 50%, #ffd166 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* buttons you’re already using */
+.btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium text-black;
+    background: linear-gradient(90deg, #fff, #d6d6d6);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, .08);
+    transition: transform .2s, box-shadow .2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 36px rgba(255, 255, 255, .12);
+}
+
+.btn-secondary {
+    @apply inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur;
+    transition: background .2s, transform .2s;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, .08);
+    transform: translateY(-1px);
+}

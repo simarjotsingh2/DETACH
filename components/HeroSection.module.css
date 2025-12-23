@@ -1,0 +1,94 @@
+/* gradient title */
+.textGradient {
+    background: linear-gradient(135deg, #ff4ecb, #7d4dff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* buttons */
+.btnPrimary {
+    background: linear-gradient(135deg, #ff4ecb, #7d4dff);
+    border-radius: 9999px;
+    padding: 0.55rem 1rem;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    transition: transform .2s ease, filter .2s ease;
+}
+
+.btnPrimary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+}
+
+.btnSecondary {
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 9999px;
+    padding: 0.55rem 1rem;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    transition: transform .2s ease, background .2s ease;
+}
+
+.btnSecondary:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, .12);
+}
+
+/* ===== 3D MOCKUPS ===== */
+/* .perspective {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    perspective: 1200px;
+    z-index: 2;
+    
+}
+
+.mockup {
+    position: absolute;
+    top: 54%;
+    width: clamp(220px, 24vw, 360px);
+    transform-style: preserve-3d;
+    translate: 0 -50%;
+    filter: drop-shadow(0 30px 50px rgba(0, 0, 0, .45));
+}
+
+.left {
+    left: max(1rem, 4vw);
+}
+
+.right {
+    right: max(1rem, 4vw);
+}
+
+.card {
+    pointer-events: auto;
+    transform: translateZ(0);
+    transition: transform .3s ease;
+    will-change: transform;
+}
+
+.img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+}
+
+
+.left .card:hover {
+    transform: rotateY(-6deg) rotateZ(-2deg) translateZ(10px);
+}
+
+.right .card:hover {
+    transform: rotateY(6deg) rotateZ(2deg) translateZ(10px);
+} */

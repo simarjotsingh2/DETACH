@@ -1,0 +1,136 @@
+/* ---- Palette helpers (already similar to your project) ---- */
+:root {
+    --ink-950: #0b0c10;
+    --neon-pink: #ff3ea5;
+    --neon-blue: #4fb7ff;
+}
+
+/* background lighting + noise */
+.bg-radial-spot {
+    background:
+        radial-gradient(40% 40% at 12% 10%, rgba(255, 62, 165, .14), transparent 60%),
+        radial-gradient(45% 45% at 88% 8%, rgba(79, 183, 255, .12), transparent 62%),
+        radial-gradient(60% 60% at 50% 100%, rgba(255, 255, 255, .05), transparent 70%),
+        #0b0c10;
+}
+
+.bg-noise {
+    background-image: url('/noise.png');
+    background-size: 180px 180px;
+}
+
+/* glass buttons */
+.glass-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: .45rem .8rem;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02));
+    border: 1px solid rgba(255, 255, 255, .12);
+    color: #fff;
+    font-weight: 600;
+    font-size: .8rem;
+    transition: .2s ease;
+    backdrop-filter: blur(6px);
+}
+
+.glass-pill:hover {
+    border-color: rgba(255, 255, 255, .28);
+}
+
+.glass-pill--active {
+    border-color: rgba(255, 62, 165, .45);
+    box-shadow: 0 8px 24px rgba(255, 62, 165, .24);
+}
+
+/* size chips */
+.size-chip {
+    padding: .55rem 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .03);
+    font-weight: 700;
+    letter-spacing: .3px;
+    transition: .2s ease;
+}
+
+.size-chip:hover {
+    border-color: rgba(255, 255, 255, .3);
+}
+
+.size-chip--active {
+    border-color: rgba(255, 62, 165, .5);
+    background: linear-gradient(180deg, rgba(255, 62, 165, .18), rgba(79, 183, 255, .12));
+}
+
+/* primary + ghost buttons */
+.button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem;
+    padding: .9rem 1.25rem;
+    border-radius: 14px;
+    font-weight: 800;
+    color: #0b0c10;
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+    transition: transform .15s ease, box-shadow .2s ease;
+    white-space: nowrap;
+}
+
+.button-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 40px rgba(255, 62, 165, .25);
+}
+
+.button-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: .8rem;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    color: #fff;
+    background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
+    transition: .2s ease;
+    backdrop-filter: blur(6px);
+}
+
+.button-ghost:hover {
+    border-color: rgba(255, 255, 255, .28);
+}
+
+.button-ghost--active {
+    border-color: rgba(255, 62, 165, .5);
+    color: var(--neon-pink);
+}
+
+/* trust chips */
+.trust-chip {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .8rem 1rem;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid rgba(255, 255, 255, .08);
+    color: #e8e8ef;
+    font-weight: 600;
+}
+
+/* quick tailwind-ish colors (if you use them in classes) */
+.bg-ink-950 {
+    background: var(--ink-950);
+}
+
+.text-ink-950 {
+    color: var(--ink-950);
+}
+
+.from-neon-pink {
+    --tw-gradient-from: var(--neon-pink);
+}
+
+.to-neon-blue {
+    --tw-gradient-to: var(--neon-blue);
+}

@@ -1,0 +1,262 @@
+:root {
+    --card-h: 360px;
+    --card-w: 240px;
+}
+
+/* CARD SHELL */
+.det-card {
+    width: var(--card-w);
+    height: var(--card-h);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 24px;
+    perspective: 2500px;
+}
+
+/* BASE COVER IMAGE */
+.det-cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity .35s ease, transform .5s ease;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* WRAPPER LAYER (the tilting background) */
+.det-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    transition: all .5s;
+    z-index: 0;
+    /* sits behind title/character */
+}
+
+/* Hover tilt + shadow (from CodePen) */
+.det-card:hover .det-wrapper {
+    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+    box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, .75);
+    -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, .75);
+    -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, .75);
+}
+
+/* Gradient masks above cover (before/after) */
+.det-wrapper::before,
+.det-wrapper::after {
+    content: "";
+    opacity: 0;
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    left: 0;
+    transition: all .5s;
+    pointer-events: none;
+}
+
+.det-wrapper::before {
+    top: 0;
+    height: 100%;
+    background-image: linear-gradient(to top,
+            transparent 46%,
+            rgba(12, 13, 19, .5) 68%,
+            rgba(12, 13, 19) 97%);
+}
+
+.det-wrapper::after {
+    bottom: 0;
+    opacity: 1;
+    background-image: linear-gradient(to bottom,
+            transparent 46%,
+            rgba(12, 13, 19, .5) 68%,
+            rgba(12, 13, 19) 97%);
+}
+
+.det-card:hover .det-wrapper::before,
+.det-wrapper::after {
+    opacity: 1;
+}
+
+.det-card:hover .det-wrapper::after {
+    height: 120px;
+}
+
+/* TITLE LAYER (lifts toward viewer) */
+.det-title {
+    width: 100%;
+    transition: transform .5s;
+    position: relative;
+    z-index: 10;
+    /* above wrapper */
+}
+
+.det-card:hover .det-title {
+    transform: translate3d(0, -50px, 100px);
+}
+
+/* FLOATING MOCKUP IMAGE LAYER (image fallback) */
+.det-character {
+    width: 100%;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: all .5s;
+    object-fit: contain;
+    z-index: 8;
+    /* between title and wrapper */
+    pointer-events: none;
+}
+
+.det-card:hover .det-character {
+    opacity: 1;
+    transform: translate3d(0, -30%, 100px);
+}
+
+/* FLOATING 3D LAYER (when using model-viewer) */
+.det-3d {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: all .5s;
+    z-index: 8;
+    /* same layering as det-character */
+    pointer-events: none;
+    /* keep card clickable */
+}
+
+.det-card:hover .det-3d {
+    opacity: 1;
+    transform: translate3d(0, -30%, 100px);
+}
+
+
+/* ====== Bottom info bar ====== */
+.det-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 12;
+    padding: 14px 16px;
+    pointer-events: none;
+    /* only the button is clickable */
+    /* soft gradient so text is always readable */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(8, 8, 10, 0.65) 40%, rgba(8, 8, 10, 0.9) 100%);
+}
+
+.det-info-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    /* left block grows, button fixed */
+    gap: 12px;
+    align-items: end;
+}
+
+.det-info-left {
+    min-width: 0;
+    /* allow truncation */
+}
+
+/* Name: two-line clamp, consistent height */
+.det-name {
+    margin: 0 0 4px 0;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Price styles */
+.det-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.det-price--new {
+    color: #ff2a6d;
+    /* your accent */
+    font-weight: 800;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+}
+
+.det-price--old {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.9rem;
+    text-decoration: line-through;
+}
+
+/* CTA button */
+.det-cta {
+    pointer-events: auto;
+    /* clickable */
+    align-self: end;
+    white-space: nowrap;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    color: #fff;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(6px);
+    transition: border-color .2s ease, background .2s ease, transform .15s ease;
+}
+
+.det-cta:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: #ff2a6d88;
+    transform: translateY(-1px);
+}
+
+/* Helper strip sits above gradient but below button/text */
+.det-helper {
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 56px;
+    /* sit just above the info bar */
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all .3s;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .45) 100%);
+    padding: 8px 12px;
+    z-index: 11;
+    text-align: center;
+}
+
+.det-card:hover .det-helper {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Subtle main-image fade (you tuned this already) */
+.has-mock:hover .det-wrapper .det-cover-image {
+    opacity: 0.55;
+    /* tweak 0.35–0.7 to taste */
+    transform: scale(1.01);
+}
+
+
+
+
+
+/* Optional: tiny hover lift/tilt for whole card */
+.det-card:hover {
+    transform: translateY(-6px) rotateX(12deg) rotateY(6deg);
+    transition: transform .35s ease;
+}
+
+.has-mock:hover .det-wrapper .det-cover-image {
+    opacity: 0.45;
+    /* fade the base image */
+    transform: scale(1.02);
+}
