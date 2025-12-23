@@ -1,6 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@/lib/db'
-import { verifyToken } from '@/lib/auth'
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+import { verifyToken } from '@/lib/auth';
+import { prisma } from '@/lib/db';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   try {
