@@ -67,3 +67,7 @@ jspm_packages/
 # Prisma
 prisma/migrations/
 
+# 3D models / large assets
+*.glb
+*.gltf
+*.bin
